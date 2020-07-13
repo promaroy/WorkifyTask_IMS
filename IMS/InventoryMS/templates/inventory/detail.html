@@ -1,0 +1,41 @@
+{% extends 'inventory/base.html' %}
+{% block content %}
+
+
+    <h2>Product Information</h2>
+
+        <div class="buttion_place">
+            <a href="{% url 'edit' product.pk %}" class="btn btn-primary btn-sm active" role="button" aria-pressed="true"> +/- Edit Product</a>
+        </div>
+
+
+
+
+      <!-- Card Header -->
+      <div class="card border-primary mb-3" style="max-width: 50rem;">
+  <div class="card-header">{{product.name}}</div>
+
+
+
+      <!-- List Group -->
+      <ul class="list-group list-group-flush">
+      <li class="list-group-item">Company: {{product.company}}</li>
+      <li class="list-group-item">Price: {{product.unit_price}}</li>
+      <li class="list-group-item">Quantity: {{product.quantity}}</li>
+      <li class="list-group-item">Description: {{product.description}}</li>
+      </ul>
+
+      </div>
+  <!-- Card content -->
+
+
+  <!-- Heading -->
+
+  <!--Grid column-->
+      <!-- <label><h5>Name</h5></label>:  {{ product.name }} <br>
+       <label><h5>Company</h5></label>: {{ product.company }}<br>
+       <label><h5>Quantity</h5></label>: {{ product.quantity }}<br>
+       <label><h5>Unit Price</h5></label>: {{ product.unit_price }}<br>
+       <label><h5>Description</h5>{{ product.description }}</label>-->
+
+{% endblock %}

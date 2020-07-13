@@ -1,0 +1,56 @@
+{% extends 'inventory/base.html' %}
+
+{% block content %}
+<form class="form-inline" method="GET" action={% url 'search_view' %} style="float:left;">
+
+<input class="form-control text-dark" type="search" aria-label="Search" name="name" placeholder="product name..." required>
+
+<button class="btn btn-outline-warning my-sm-0 ml-1" type="submit">Search</button>
+</form>
+
+
+    <div class="buttion_place">
+        <a href="{% url 'addnew' %}" class="btn btn-primary btn-lg active" role="button" aria-pressed="true"> + Add Product</a>
+    </div>
+
+    <table class="table table-striped">
+        <thead>
+        <tr>
+
+            <th> Name</th>
+            <th>Company</th>
+
+            <th>Unit Price</th>
+            <th>Status</th>
+            <th>Details</th>
+            <th>Edit details</th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for product in products %}
+
+            <tr>
+
+                <td>{{ product.name }}</td>
+                <td>{{product.company}}</td>
+
+                <td>{{ product.unit_price }}</td>
+                <td> {% if product.quantity <= 3 and product.quantity > 0 %} <p style="color:red">Only {{product.quantity}} left!!</p>
+                  {% elif product.quantity == 0 %}<p style="color:grey"> Unavailable</p>
+
+                  {% else %}
+                Available
+                {% endif %}</td>
+                <th>
+                    <a href="{% url 'detail' product.pk %}">
+                        Description
+                    </a>
+                </th>
+                <td><a href="{% url 'edit' product.pk %}" class="btn btn-primary btn-sm active" role="button" aria-pressed="true"> +/- Edit Product</a></td>
+            </tr>
+        {% endfor %}
+
+        </tbody>
+    </table>
+
+{% endblock %}
